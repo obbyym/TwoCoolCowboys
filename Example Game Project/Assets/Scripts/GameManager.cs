@@ -10,6 +10,10 @@ public class GameManager : MonoBehaviour
     public Button hitBtn;
     public Button standBtn;
     public Button betBtn;
+
+    // Access the player and dealer's script
+    PlayerScript playerScript;
+    PlayerScript dealerScript;
     void Start()
     {
         // Add on click listeners to the buttons
@@ -20,7 +24,7 @@ public class GameManager : MonoBehaviour
 
      private void DealClicked()
     {
-        throw new NotImplementedException();
+        playerScript.StartHand();
     }
 
 
