@@ -1,10 +1,30 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
+public class SpriteNameGetter : MonoBehaviour
+
 {
+    //this is from chatgpt hope it works
+    public Image image; // Reference to the Image component
+
+    void Start()
+    {
+        // Access the sprite from the Image component
+        Sprite sprite = image.sprite;
+
+        if (sprite != null)
+        {
+            Debug.Log("Sprite Name: " + sprite.name);
+        }
+        else
+        {
+            Debug.LogError("No sprite assigned to the Image.");
+        }
+    }
     // Game Buttons
     public Button dealBtn;
     public Button hitBtn;

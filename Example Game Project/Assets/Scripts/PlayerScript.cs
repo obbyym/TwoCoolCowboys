@@ -3,7 +3,26 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerScript : MonoBehaviour
+public class SpriteNameGetter : MonoBehaviour
+
 {
+    //this is from chatgpt hope it works
+    public Image image; // Reference to the Image component
+
+    void Start()
+    {
+        // Access the sprite from the Image component
+        Sprite sprite = image.sprite;
+
+        if (sprite != null)
+        {
+            Debug.Log("Sprite Name: " + sprite.name);
+        }
+        else
+        {
+            Debug.LogError("No sprite assigned to the Image.");
+        }
+    }
     // - - - This script is for BOTH player and dealer
 
     //Get other scripts
@@ -29,6 +48,11 @@ public class PlayerScript : MonoBehaviour
 
     }
 
+    public void StartHand()
+    {
+        GetCard();
+        GetCard();
+    }
     // Add a hand to the player/dealer's hand
 
     public int GetCard()

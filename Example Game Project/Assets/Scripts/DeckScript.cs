@@ -1,15 +1,38 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
+
 public class DeckScript : MonoBehaviour
+public class SpriteNameGetter : MonoBehaviour
+
 {
+    //this is from chatgpt hope it works
+    public Image image; // Reference to the Image component
+
+    void Start()
+    {
+        // Access the sprite from the Image component
+        Sprite sprite = image.sprite;
+
+        if (sprite != null)
+        {
+            Debug.Log("Sprite Name: " + sprite.name);
+        }
+        else
+        {
+            Debug.LogError("No sprite assigned to the Image.");
+        }
+    }
     public Sprite[] cardSprites;
     int[] cardValues = new int[53];
     int currentIndex = 0;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+   {
         
-    }
+   }
 
     void GetCardValues()
     {
@@ -36,7 +59,7 @@ public class DeckScript : MonoBehaviour
         //Standard array data swapping technique
         for(int i = cardSprites.Length -1; i > 0; --i)
         {
-         int j = Mathf. FloorToInt(Random.Range(0.0f, 1.0f) * cardSprites.Length - 1) + 1;
+         int j = Mathf.FloorToInt(Random.Range(0.0f, 1.0f) * cardSprites.Length - 1) + 1;
          cardSprites face = cardSprites[i];
          cardSprites[i] = cardSprites[j];
          cardSprites[j] = face;
@@ -49,7 +72,7 @@ public class DeckScript : MonoBehaviour
     }
 
     public int DealCard(CardScript cardScript)
-    {}
+    {
         cardScript.SetSprite(cardSprites[currentIndex]);
         cardScript.SetValue(cardValues[currentIndex]);
         currentIndex++;
